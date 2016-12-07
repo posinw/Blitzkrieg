@@ -21,7 +21,9 @@ public class GameZone extends Canvas{
 		gc.setFill(Color.LIGHTGRAY);
 		gc.fillRect(0, 0, zonewidth, zoneheight);
 		
-		
+		gc.setLineWidth(2.0);
+		gc.setFill(Color.RED);
+		gc.strokeRoundRect(0, 0, 50, 50, 0, 0);
 	}
 	
 	

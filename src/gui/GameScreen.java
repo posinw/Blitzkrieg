@@ -13,8 +13,8 @@ import javafx.scene.text.FontWeight;
 
 public class GameScreen extends BorderPane {
 	
-	public static final int gscreenwidth = 1000 ;
-	public static final int gscreenheight = 860 ;
+	public static final int gscreenwidth = 1200 ;
+	public static final int gscreenheight = 600 ;
 	public static final int ctrwidth = 250 ;
 	private GameZone gz = new GameZone() ;
 	
