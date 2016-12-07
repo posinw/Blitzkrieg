@@ -51,7 +51,7 @@ public class GameScreen extends BorderPane {
 		});
 		
 		this.setCenter(gz);
-		this.setRight(ctrcenter);
+	this.setRight(ctrcenter);
 		ctrcenter.setBottom(act);
 	}
 
