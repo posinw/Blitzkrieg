@@ -15,6 +15,8 @@ public class GameScreen extends BorderPane {
 	
 	public static final int gscreenwidth = 1000 ;
 	public static final int gscreenheight = 860 ;
+	public static final int ctrwidth = 250 ;
+	private GameZone gz = new GameZone() ;
 	
 	public GameScreen(){
 		this.setPrefSize(gscreenwidth, gscreenheight);
@@ -48,6 +50,7 @@ public class GameScreen extends BorderPane {
 			}
 		});
 		
+		this.setCenter(gz);
 		this.setRight(ctrcenter);
 		ctrcenter.setBottom(act);
 	}
