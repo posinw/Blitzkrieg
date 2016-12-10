@@ -1,11 +1,12 @@
 package gui;
 
 public abstract class Entity implements IRenderable{
-protected int x,y,z;
+	protected int x,y,z;
 	
 	public Entity(int x,int y){
 		this.x=x;
 		this.y=y;
+		z=1 ;
 	}
 	public int getZ() {
 		// TODO Auto-generated method stub
