@@ -194,7 +194,7 @@ public class GameZone extends Canvas {
 					} else
 						state = 0;
 
-					gm.update();
+					//gm.update();
 				}
 			}
 		}
@@ -279,9 +279,39 @@ public class GameZone extends Canvas {
 						}
 						
 						gm.getUPos()[u.getX() / 60][u.getY() / 60] = 0;
-						u.setX(((int) (event.getSceneX()) / 60) * 60);
+						
+						/*u.setX(((int) (event.getSceneX()) / 60) * 60);
 						u.setY(((int) (event.getSceneY()) / 60) * 60);
-						gm.getUPos()[u.getX() / 60][u.getY() / 60] = u.getPlayer();
+						gm.getUPos()[u.getX() / 60][u.getY() / 60] = u.getPlayer();*/
+						//gm.update(u, ((int) (event.getSceneX()) / 60) * 60, ((int) (event.getSceneY()) / 60) * 60);
+						
+						Thread t = new Thread(() -> {
+							while(u.getX()!=((int) (event.getSceneX()) / 60) * 60||u.getY()!=((int) (event.getSceneY()) / 60) * 60){
+								try {
+									Thread.sleep(200);
+									if(u.getX()>((int) (event.getSceneX()) / 60) * 60){
+										u.setX(u.getX()-10);
+									}
+									if(u.getX()<((int) (event.getSceneX()) / 60) * 60){
+										u.setX(u.getX()+10);
+									}
+									if(u.getY()>((int) (event.getSceneY()) / 60) * 60){
+										u.setY(u.getY()-10);
+									}
+									if(u.getY()<((int) (event.getSceneY()) / 60) * 60){
+										u.setY(u.getY()+10);
+									}
+									paintComponents();
+								} catch (InterruptedException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+									System.out.println("Stop Timer Thread");
+									break;
+								}
+							}
+						});
+						t.start();
+						
 						gm.resetOverlay();
 						u.setmovable(false);
 						state = 2;
