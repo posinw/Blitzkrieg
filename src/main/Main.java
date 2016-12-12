@@ -25,7 +25,7 @@ public class Main extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		instance = this;
 		this.primaryStage = primaryStage;
-		this.primaryStage.setTitle("Proj Prog");
+		this.primaryStage.setTitle("Blitzkrieg");
 		this.primaryStage.setResizable(false);
 		this.primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 			
