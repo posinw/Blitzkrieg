@@ -243,7 +243,22 @@ public class GameZone extends Canvas {
 				if (event.getButton().equals(MouseButton.PRIMARY)) {
 
 					if (gm.getOPos()[(int) (event.getSceneX()) / 60][(int) (event.getSceneY()) / 60] == 1) {
-
+						
+						if(u.getX()/60==((int) (event.getSceneX()) / 60)&&u.getY()/60==((int) (event.getSceneY()) / 60)){
+							if(u instanceof Soldier){
+								if(((Soldier) u).getHealth()<14)((Soldier) u).setHealth(((Soldier) u).getHealth()+1);
+							}
+							if(u instanceof Tank){
+								if(((Tank) u).getHealth()<16)((Tank) u).setHealth(((Tank) u).getHealth()+1);
+							}
+							if(u instanceof Artillery){
+								if(((Artillery) u).getHealth()<10)((Artillery) u).setHealth(((Artillery) u).getHealth()+1);
+							}
+							if(u instanceof APC){
+								if(((APC) u).getHealth()<13)((APC) u).setHealth(((APC) u).getHealth()+1);
+							}
+						}
+						
 						gm.getUPos()[u.getX() / 60][u.getY() / 60] = 0;
 						u.setX(((int) (event.getSceneX()) / 60) * 60);
 						u.setY(((int) (event.getSceneY()) / 60) * 60);

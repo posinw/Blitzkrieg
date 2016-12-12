@@ -17,7 +17,7 @@ public class Artillery extends Unit{
 		super(x, y,direction,player);
 		this.firepower = 3 ;
 		this.health = 10 ;
-		this.firerange  = 4 ;
+		this.firerange  = 6 ;
 		this.walkrange = 2 ;
 	}
 
