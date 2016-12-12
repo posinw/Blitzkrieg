@@ -37,8 +37,8 @@ public class Artillery extends Unit{
 				}
 			gc.setStroke(Color.BLACK);
 		}
-		if(direction==1)gc.drawImage(RenderableHolder.Artillery[0],this.x,this.y);
-		if(direction==-1)gc.drawImage(RenderableHolder.Artillery[1], this.x, this.y);
+		if(direction==1)gc.drawImage(RenderableHolder.artillery[0],this.x,this.y);
+		if(direction==-1)gc.drawImage(RenderableHolder.artillery[1], this.x, this.y);
 		
 	}
 	

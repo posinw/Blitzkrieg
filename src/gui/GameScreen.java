@@ -18,7 +18,7 @@ public class GameScreen extends BorderPane {
 	public static final int gscreenheight = 720;
 	public static final int ctrwidth = 250;
 	private GameZone gz = new GameZone();
-	
+
 	private Label turnButton = new Label("Start Game");
 
 	public GameScreen() {
@@ -41,7 +41,7 @@ public class GameScreen extends BorderPane {
 		act.setPrefHeight(100);
 		act.setStyle("-fx-background-color: darkgreen");
 
-		//Label turnButton = new Label("Start Game");
+		// Label turnButton = new Label("Start Game");
 		turnButton.setFont(Font.font("Tahoma", FontWeight.BOLD, FontPosture.ITALIC, 40));
 		turnButton.setTextFill(Color.WHITE);
 
@@ -63,19 +63,62 @@ public class GameScreen extends BorderPane {
 			public void handle(MouseEvent event) {
 
 				if (turnButton.getText().toString() == "Start Game") {
-					turnButton.setText("P1 Turn End");
-					
-					for (IRenderable ir : RenderableHolder.getInstance().getEntities()) {
-						if (ir instanceof Unit) {
-							if (((Unit) ir).getPlayer() == 1)
-								((Unit) ir).setmovable(true);
-						}
-					}
+					turnButton.setText("End placing");
+
+					/*
+					 * for (IRenderable ir :
+					 * RenderableHolder.getInstance().getEntities()) { if (ir
+					 * instanceof Unit) { if (((Unit) ir).getPlayer() == 1)
+					 * ((Unit) ir).setmovable(true); } }
+					 */
+					gz.setState(9);
 					gz.paintComponents();
 				} else {
-					
-						buttonToggle();
 
+					if (turnButton.getText().toString() == "End placing") {
+						if(gz.getGm().getturn()==1){
+							gz.getGm().setturn(2);
+							gz.setS(3);
+							gz.setA(1);
+							gz.setT(2);
+							gz.setAp(2);
+							gz.setSp("");
+						}
+						else {
+							if(gz.getGm().getturn()==2){
+								turnButton.setText("P1 Turn End");
+								
+								
+								gz.getGm().setturn(1);
+								gz.setState(0);
+								for (IRenderable ir : RenderableHolder.getInstance().getEntities()) {
+									if (ir instanceof Unit) {
+										if (((Unit) ir).getPlayer() == 1)
+											((Unit) ir).setmovable(true);
+									}
+								}
+								gz.paintComponents();
+							}
+						}
+					} else {
+						/*if (turnButton.getText().toString() == "P2 placing Unit") {
+							turnButton.setText("End placing");
+							gz.getGm().setturn(1);
+							
+						} else{*/
+							/*if(turnButton.getText().toString() == "End placing"){
+								turnButton.setText("P1 Turn End");
+								gz.setState(0);
+								for (IRenderable ir : RenderableHolder.getInstance().getEntities()) {
+									if (ir instanceof Unit) {
+										if (((Unit) ir).getPlayer() == 1)
+											((Unit) ir).setmovable(true);
+									}
+								}
+								gz.paintComponents();
+							}
+							else*/ buttonToggle();
+							}
 				}
 			}
 		});
@@ -84,9 +127,10 @@ public class GameScreen extends BorderPane {
 		this.setRight(ctrcenter);
 		ctrcenter.setCenter(info);
 		ctrcenter.setBottom(act);
+
 	}
-	
-	public void buttonToggle(){
+
+	public void buttonToggle() {
 		if (gz.getGm().getturn() == 1) {
 			gz.getGm().setturn(2);
 			for (IRenderable ir : RenderableHolder.getInstance().getEntities()) {
