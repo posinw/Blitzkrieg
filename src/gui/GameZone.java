@@ -35,8 +35,6 @@ public class GameZone extends Canvas {
 	private int xtemp=-1 ;
 	private int ytemp=-1 ;
 	
-	int p = 0;
-	int q = 0;
 	private int state = 10;
 	private String sp = "";
 
@@ -519,9 +517,9 @@ public class GameZone extends Canvas {
 
 		Font theFont = Font.font("Arial", FontWeight.LIGHT, 20);
 		gc.setFont(theFont);
-		if (s + a + t + ap != 0) {
+		//if (s + a + t + ap != 0) {
 			if (getGm().getturn() == 1) {
-				if (s != 0) {
+				//if (s != 0) {
 					gc.setFill(Color.DARKGRAY);
 					gc.fillRoundRect(540, 180, 60, 60, 20, 20);
 					if (sp.equals("s")) {
@@ -531,8 +529,15 @@ public class GameZone extends Canvas {
 					gc.setFill(Color.LIGHTGOLDENRODYELLOW);
 					gc.fillText("left : " + s, 620, 180);
 					gc.drawImage(RenderableHolder.soldier[0], 540, 180);
-				}
-				if (t != 0) {
+					
+					if(s==0){
+						gc.setGlobalAlpha(0.7);
+						gc.setFill(Color.DIMGRAY);
+						gc.fillRoundRect(540, 180, 60, 60, 20, 20);
+						gc.setGlobalAlpha(1);
+					}
+				//}
+				//if (t != 0) {
 					gc.setFill(Color.DARKGRAY);
 					gc.fillRoundRect(540, 300, 60, 60, 20, 20);
 					if (sp.equals("t")) {
@@ -542,8 +547,15 @@ public class GameZone extends Canvas {
 					gc.setFill(Color.LIGHTGOLDENRODYELLOW);
 					gc.fillText("left : " + t, 620, 300);
 					gc.drawImage(RenderableHolder.tank[0], 540, 300);
-				}
-				if (a != 0) {
+					
+					if(t==0){
+						gc.setGlobalAlpha(0.7);
+						gc.setFill(Color.DIMGRAY);
+						gc.fillRoundRect(540, 300, 60, 60, 20, 20);
+						gc.setGlobalAlpha(1);
+					}
+				//}
+				//if (a != 0) {
 					gc.setFill(Color.DARKGRAY);
 					gc.fillRoundRect(540, 420, 60, 60, 20, 20);
 					if (sp.equals("a")) {
@@ -553,8 +565,15 @@ public class GameZone extends Canvas {
 					gc.setFill(Color.LIGHTGOLDENRODYELLOW);
 					gc.fillText("left : " + a, 620, 420);
 					gc.drawImage(RenderableHolder.artillery[0], 540, 420);
-				}
-				if (ap != 0) {
+					
+					if(a==0){
+						gc.setGlobalAlpha(0.7);
+						gc.setFill(Color.DIMGRAY);
+						gc.fillRoundRect(540, 420, 60, 60, 20, 20);
+						gc.setGlobalAlpha(1);
+					}
+				//}
+				//if (ap != 0) {
 					gc.setFill(Color.DARKGRAY);
 					gc.fillRoundRect(540, 540, 60, 60, 20, 20);
 					if (sp.equals("ap")) {
@@ -564,12 +583,19 @@ public class GameZone extends Canvas {
 					gc.setFill(Color.LIGHTGOLDENRODYELLOW);
 					gc.fillText("left : " + ap, 620, 540);
 					gc.drawImage(RenderableHolder.apc[0], 540, 540);
-				}
+					
+					if(ap==0){
+						gc.setGlobalAlpha(0.7);
+						gc.setFill(Color.DIMGRAY);
+						gc.fillRoundRect(540, 540, 60, 60, 20, 20);
+						gc.setGlobalAlpha(1);
+					}
+				//}
 				// paintComponents();
 
 			} else {
 				if (getGm().getturn() == 2) {
-					if (s != 0) {
+					//if (s != 0) {
 						gc.setFill(Color.DARKGRAY);
 						gc.fillRoundRect(240, 180, 60, 60, 20, 20);
 						if (sp.equals("s")) {
@@ -579,8 +605,15 @@ public class GameZone extends Canvas {
 						gc.setFill(Color.LIGHTGOLDENRODYELLOW);
 						gc.fillText("left : " + s, 320, 180);
 						gc.drawImage(RenderableHolder.soldier[0], 240, 180);
-					}
-					if (t != 0) {
+						
+						if(s==0){
+							gc.setGlobalAlpha(0.7);
+							gc.setFill(Color.DIMGRAY);
+							gc.fillRoundRect(240, 180, 60, 60, 20, 20);
+							gc.setGlobalAlpha(1);
+						}
+					//}
+					//if (t != 0) {
 						gc.setFill(Color.DARKGRAY);
 						gc.fillRoundRect(240, 300, 60, 60, 20, 20);
 						if (sp.equals("t")) {
@@ -590,8 +623,15 @@ public class GameZone extends Canvas {
 						gc.setFill(Color.LIGHTGOLDENRODYELLOW);
 						gc.fillText("left : " + t, 320, 300);
 						gc.drawImage(RenderableHolder.tank[0], 240, 300);
-					}
-					if (a != 0) {
+						
+						if(t==0){
+							gc.setGlobalAlpha(0.7);
+							gc.setFill(Color.DIMGRAY);
+							gc.fillRoundRect(240, 300, 60, 60, 20, 20);
+							gc.setGlobalAlpha(1);
+						}
+					//}
+					//if (a != 0) {
 						gc.setFill(Color.DARKGRAY);
 						gc.fillRoundRect(240, 420, 60, 60, 20, 20);
 						if (sp.equals("a")) {
@@ -601,8 +641,15 @@ public class GameZone extends Canvas {
 						gc.setFill(Color.LIGHTGOLDENRODYELLOW);
 						gc.fillText("left : " + a, 320, 420);
 						gc.drawImage(RenderableHolder.artillery[0], 240, 420);
-					}
-					if (ap != 0) {
+						
+						if(a==0){
+							gc.setGlobalAlpha(0.7);
+							gc.setFill(Color.DIMGRAY);
+							gc.fillRoundRect(240, 420, 60, 60, 20, 20);
+							gc.setGlobalAlpha(1);
+						}
+					//}
+					//if (ap != 0) {
 						gc.setFill(Color.DARKGRAY);
 						gc.fillRoundRect(240, 540, 60, 60, 20, 20);
 						if (sp.equals("ap")) {
@@ -612,9 +659,16 @@ public class GameZone extends Canvas {
 						gc.setFill(Color.LIGHTGOLDENRODYELLOW);
 						gc.fillText("left : " + ap, 320, 540);
 						gc.drawImage(RenderableHolder.apc[0], 240, 540);
-					}
+						
+						if(ap==0){
+							gc.setGlobalAlpha(0.7);
+							gc.setFill(Color.DIMGRAY);
+							gc.fillRoundRect(240, 540, 60, 60, 20, 20);
+							gc.setGlobalAlpha(1);
+						}
+					//}
 					// paintComponents();
-				}
+				//}
 			}
 		}
 
@@ -783,6 +837,26 @@ public class GameZone extends Canvas {
 		// System.out.println("ooo");
 		paintComponents();
 		prePlacingUnit();
+	}
+	
+	public void recruit(){
+		cancelAction();
+		
+		if(getGm().getturn()==1){
+			s=getGm().getP1Money()/50 ;
+			t=getGm().getP1Money()/50 ;
+			a=getGm().getP1Money()/50 ;
+			ap=getGm().getP1Money()/50 ;
+			}
+		else{
+			if(getGm().getturn()==2){
+				s=getGm().getP2Money()/50 ;
+				t=getGm().getP2Money()/50 ;
+				a=getGm().getP2Money()/50 ;
+				ap=getGm().getP2Money()/50 ;
+			}
+		}
+		state=9 ;
 	}
 
 	public Label getDesc() {

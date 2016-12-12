@@ -20,6 +20,9 @@ public class GameManager {
 	private int p1unit=0;
 	private int p2unit=0;
 	
+	private int p1Money=100 ;
+	private int p2Money=100 ;
+	
 
 	public GameManager(){
 		
@@ -103,46 +106,7 @@ public class GameManager {
 		}
 	}
 	
-	public void update(Unit u,int x,int y) {
-		/*System.out.println(u.getX()+" "+u.getY()+" "+x+" "+y);
-		if(u.getX()>x){
-			u.setX(u.getX()-10);
-		}
-		if(u.getX()<x){
-			u.setX(u.getX()+10);
-		}
-		if(u.getY()>y){
-			u.setY(u.getY()-10);
-		}
-		if(u.getY()<y){
-			u.setY(u.getY()+10);
-		}*/
-		
-		/*Thread t = new Thread(() -> {
-			while(u.getX()!=x||u.getY()!=y){
-				try {
-					Thread.sleep(200);
-					if(u.getX()>x){
-						u.setX(u.getX()-10);
-					}
-					if(u.getX()<x){
-						u.setX(u.getX()+10);
-					}
-					if(u.getY()>y){
-						u.setY(u.getY()-10);
-					}
-					if(u.getY()<y){
-						u.setY(u.getY()+10);
-					}
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-					System.out.println("Stop Timer Thread");
-					break;
-				}
-			}
-		});
-		t.start();*/
+	public void update() {
 	}
 	
 	public void checkwin(){
@@ -229,6 +193,22 @@ public class GameManager {
 
 	public int getP2unit() {
 		return p2unit;
+	}
+
+	public int getP1Money() {
+		return p1Money;
+	}
+
+	public void setP1Money(int p1Money) {
+		this.p1Money = p1Money;
+	}
+
+	public int getP2Money() {
+		return p2Money;
+	}
+
+	public void setP2Money(int p2Money) {
+		this.p2Money = p2Money;
 	}
 
 	
