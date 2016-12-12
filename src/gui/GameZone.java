@@ -21,6 +21,8 @@ import logic.Soldier;
 import logic.Tank;
 import logic.Unit;
 
+import main.Main;
+
 public class GameZone extends Canvas {
 
 	private static final int zonewidth = GameScreen.gscreenwidth - GameScreen.ctrwidth;
@@ -71,7 +73,18 @@ public class GameZone extends Canvas {
 						// " + gm.getP2unit());
 					} catch (Myexception e) {
 						stop();
-						if (gm.getP1unit() == 0) {
+						if(gm.getP1unit() == 0 && gm.getP2unit() == 0){
+							Platform.runLater(new Runnable() {
+								public void run() {
+									Alert alert = new Alert(AlertType.INFORMATION);
+									alert.setTitle("Draw!!!");
+									alert.setHeaderText(null);
+									alert.setContentText("Draw!!!");
+									alert.showAndWait();
+								}
+							});
+						}
+						else {if (gm.getP1unit() == 0) {
 							// System.out.println("rip p1");
 
 							Platform.runLater(new Runnable() {
@@ -95,7 +108,13 @@ public class GameZone extends Canvas {
 									alert.showAndWait();
 								}
 							});
-						}
+						}}
+						for(int i=RenderableHolder.getInstance().getEntities().size()-1;i>=0;i--){
+							IRenderable ir=RenderableHolder.getInstance().getEntities().get(i);
+							if(ir instanceof Unit)((Unit) ir).setDestroy(true);
+							}
+						getGm().removeDestroyEntity();
+						Main.instance.toggleScene();
 					}
 					// gm.checkwin();
 

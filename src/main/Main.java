@@ -37,8 +37,8 @@ public class Main extends Application{
 		
 		this.homeScreen = new HomeScreen() ;
 		this.homeScene = new Scene(homeScreen) ;
-		this.gameScreen = new GameScreen() ;
-		this.gameScene = new Scene(gameScreen) ;
+		/*this.gameScreen = new GameScreen() ;
+		this.gameScene = new Scene(gameScreen) ;*/
 		
 		this.primaryStage.setScene(this.homeScene);
 		this.primaryStage.show();
@@ -46,7 +46,11 @@ public class Main extends Application{
 	
 	
 	public void toggleScene(){
-		if(this.primaryStage.getScene()==this.homeScene)this.primaryStage.setScene(this.gameScene);
+		if(this.primaryStage.getScene()==this.homeScene){
+			this.gameScreen = new GameScreen() ;
+			this.gameScene = new Scene(gameScreen) ;
+			this.primaryStage.setScene(this.gameScene);
+		}
 		else if(this.primaryStage.getScene()==this.gameScene)this.primaryStage.setScene(this.homeScene);
 	}
 	
