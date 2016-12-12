@@ -31,7 +31,10 @@ public class GameZone extends Canvas {
 	private GraphicsContext gc = this.getGraphicsContext2D();
 
 	private Label desc = new Label();
-
+	
+	private int xtemp=-1 ;
+	private int ytemp=-1 ;
+	
 	int p = 0;
 	int q = 0;
 	private int state = 10;
@@ -154,10 +157,10 @@ public class GameZone extends Canvas {
 	}
 
 	public void gogo(GameManager gm) {
-		/*
-		 * System.out.println("state : " + state); System.out.println("sp : " +
-		 * sp); System.out.println("turn : " + getGm().getturn());
-		 */
+		
+		 System.out.println("state : " + state);// System.out.println("sp : " +
+		 //sp); System.out.println("turn : " + getGm().getturn());
+		 
 		if (state == 10) {
 			gc.setFill(Color.PURPLE);
 			gc.fillRect(0, 0, zonewidth, zoneheight);
@@ -281,14 +284,19 @@ public class GameZone extends Canvas {
 						gm.getUPos()[u.getX() / 60][u.getY() / 60] = 0;
 						
 						/*u.setX(((int) (event.getSceneX()) / 60) * 60);
-						u.setY(((int) (event.getSceneY()) / 60) * 60);
-						gm.getUPos()[u.getX() / 60][u.getY() / 60] = u.getPlayer();*/
+						u.setY(((int) (event.getSceneY()) / 60) * 60);*/
+						//gm.getUPos()[u.getX() / 60][u.getY() / 60] = u.getPlayer();
+						gm.getUPos()[(int) (event.getSceneX()) / 60][(int) (event.getSceneY()) / 60] = u.getPlayer();
+						xtemp=((int) (event.getSceneX()) / 60) * 60 ;
+						ytemp=((int) (event.getSceneY()) / 60) * 60 ;
 						//gm.update(u, ((int) (event.getSceneX()) / 60) * 60, ((int) (event.getSceneY()) / 60) * 60);
-						
+						gm.resetOverlay();
+						u.setmovable(false);
+						//gm.getUPos()[((int) (event.getSceneX()) / 60)][((int) (event.getSceneY()) / 60) / 60] = u.getPlayer();
 						Thread t = new Thread(() -> {
 							while(u.getX()!=((int) (event.getSceneX()) / 60) * 60||u.getY()!=((int) (event.getSceneY()) / 60) * 60){
 								try {
-									Thread.sleep(200);
+									Thread.sleep(50);
 									if(u.getX()>((int) (event.getSceneX()) / 60) * 60){
 										u.setX(u.getX()-10);
 									}
@@ -311,17 +319,27 @@ public class GameZone extends Canvas {
 							}
 						});
 						t.start();
-						
-						gm.resetOverlay();
+						//System.out.println(((int) (event.getSceneX()) / 60) * 60+" "+((int) (event.getSceneY()) / 60) * 60);
+						/*if(u.getX()==((int) (event.getSceneX()) / 60) * 60&&u.getY()==((int) (event.getSceneY()) / 60) * 60){
+						//gm.resetOverlay();
 						u.setmovable(false);
 						state = 2;
+						}*/
 
 					}
 					paintComponents();
 				} else
 					cancelAction();
+				
 			}
 		});
+		System.out.println(u.getX()+" "+u.getY());
+		System.out.println(xtemp+" "+ytemp);
+		if(u.getX()==xtemp&&u.getY()==ytemp){
+			//gm.resetOverlay();
+			//u.setmovable(false);
+			state = 2;
+			}
 	}
 
 	public void atkgrid(GameManager gm, Unit u) {
